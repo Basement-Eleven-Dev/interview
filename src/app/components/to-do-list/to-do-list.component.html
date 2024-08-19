@@ -1,6 +1,9 @@
-<h4 class="mb-4">To Do <span class="badge bg-secondary">{{ls.count}}</span><button (click)="ls.newEntry()" class="float-end btn btn-success">New +</button></h4>
+<h4 class="mb-4">To Do <span class="badge bg-secondary">{{ls.count}}</span>
+    <button (click)="ls.newEntry()" class="float-end btn btn-success">New +</button>
+    <button (click)="ls.sort()" class="float-end btn btn-primary me-2"><fa-icon [icon]="sortIcon"></fa-icon> </button>
+</h4>
 <p *ngIf="ls.count == 0"><em>This space seems to be empty.</em></p>
-<div class="mb-2 border rounded d-flex align-items-center p-2" *ngFor="let entry of ls.list; index as i">
+<div class="mb-2 border rounded d-flex align-items-center p-2" *ngFor="let entry of ls.entries; index as i">
     <fa-icon [ngbTooltip]="entry.done ? 'Flag as to do' : 'Flag as completed'" role="button" [icon]="entry.done ? unchecked : checked" (click)="ls.switchEntry(i)"></fa-icon> 
     <input class="flex-fill mx-3 border-0" [class.checked]="entry.done" #textField type="text" [value]="entry.title" (input)="ls.edit(i,textField.value)">
     <fa-icon ngbTooltip="Duplicate" role="button" class="mx-2" (click)="ls.duplicate(entry, i)" [icon]="copyIcon"></fa-icon> 

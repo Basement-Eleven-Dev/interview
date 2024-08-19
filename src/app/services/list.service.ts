@@ -5,9 +5,12 @@ import { ToDoEntry } from '../models/todo-entry';
   providedIn: 'root'
 })
 export class ListService {
-  list: ToDoEntry[] = [];
+  private list: ToDoEntry[] = [];
   get count(): number {
     return this.list.length
+  }
+  get entries(): ToDoEntry[] {
+    return this.list
   }
   duplicate(entry: ToDoEntry, index: number): void {
     this.list.splice(index, 0, entry)
@@ -23,6 +26,9 @@ export class ListService {
   }
   switchEntry(index: number): void {
     this.list[index].done = !this.list[index].done;
+  }
+  sort(): void {
+    //please fill this
   }
   constructor() { }
 }

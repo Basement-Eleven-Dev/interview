@@ -3,7 +3,7 @@ import { ListService } from '../../services/list.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { faCircleCheck as checkedIcon, faCopy, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
-import { faCircleCheck as uncheckedIcon } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDownAZ, faCircleCheck as uncheckedIcon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -19,5 +19,6 @@ export class ToDoListComponent {
   unchecked = uncheckedIcon
   copyIcon = faCopy
   removeIcon = faTrashAlt
+  sortIcon = faArrowDownAZ
   constructor(public ls: ListService) { }
 }

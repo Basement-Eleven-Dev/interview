@@ -9,12 +9,12 @@ Make sure you have a local installation of node.js and angular 17+.
 
 ## Tasks
 
-
-
 # 1. Bugfix
 
 It seems that if you duplicate a To-Do entry and you try to edit it, the changes will also reflect the original element. This is not a normal behaviour.
 
-# 2. Feature
+# 2. Features
 
-Right now, if you close the browser and reopen it, you will lose all your data. Develop a feature that at every change automatically save the list in your browser and recover it at the next opening (no database required, only local machine).
+1. Right now, if you close the browser and reopen it, you will lose all your data. Develop a feature that at every change automatically save the list in your browser and recover it at the next opening (no database required, only local machine).
+2. Develop a feature that moves at the bottom of the list the entries that have been checked.
+3. Fill the function `sort()` in `list.service.ts`.
