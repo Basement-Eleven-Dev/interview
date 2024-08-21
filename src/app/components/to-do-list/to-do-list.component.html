@@ -1,6 +1,7 @@
 <h4 class="mb-4">To Do <span class="badge bg-secondary">{{ls.count}}</span>
     <button (click)="ls.newEntry()" class="float-end btn btn-success">New +</button>
     <button (click)="ls.sort()" class="float-end btn btn-primary me-2"><fa-icon [icon]="sortIcon"></fa-icon> </button>
+    <button (click)="ls.generateSampleData()" class="float-end btn btn-danger me-2">Generate Sample Data</button>
 </h4>
 <p *ngIf="ls.count == 0"><em>This space seems to be empty.</em></p>
 <div class="mb-2 border rounded d-flex align-items-center p-2" *ngFor="let entry of ls.entries; index as i">
