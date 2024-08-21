@@ -26,8 +26,8 @@ Fill the function `get committmentPercentage()` in `list.service.ts`.
 As you can notice, at the top of the list there is a committment bar that represents how much you're busy in your life. In this imaginary world the committment is measured as follows:
 1. Every entry in the list gives a `1.5%` increment if it's not completed (`ToDoEntry.done == false`) or a `-4%` decrement if it's completed (`ToDoEntry.done == true`).
 2. Every word in each entry increase the committment bar of `1%`.
-3. Every word with double letters inside increase the bar of another `1%` for each different adiacent doubled letters (es. the word ***yellow*** increase the committment of `2%` in total, the word ***committment*** gives a total increment of `3%`, the word ***helloooo*** gives a total increment of `5%` - he**LL**oooo, hell**OO**oo,hello**OO**o,helloo**OO**).
+3. Furthermore, for each different couple of the same adiacent letter gives another `1%` increment. Es. the word ***yellow*** increase the committment of `2%` in total (`1%` for the word itself plus another `1%` for the couple ye**LL**ow), the word ***committment*** gives a total increment of `3%` (`1%` for the word itself plus `2%` for the couples co**MM**ittment and commi**TT**ment), the word ***helloooo*** gives a total increment of `5%` (`1%` for the word itself plus `4%` for the 4 different couples he**LL**oooo, hell**OO**oo,hello**OO**o,helloo**OO**).
 
-The committment value for the sample data (that you can generate by clicking on "Generate Sample Data") is `43.5%`.
+The committment value for the sample data (that you can generate by clicking on "Generate Sample Data") is `43.5%` (if you get `45.5`, you are almost nailed it, but pay attention to exceptions).
 
 Note:  The total committment value must be greater than `0` and cannot exceed `100%`.
