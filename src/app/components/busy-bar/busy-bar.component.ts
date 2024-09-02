@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
-import { ListService } from '../../services/list.service';
+import { ToDoList } from '../../models/todo-entry';
 
 @Component({
   selector: 'app-busy-bar',
@@ -10,7 +10,8 @@ import { ListService } from '../../services/list.service';
   styleUrl: './busy-bar.component.scss'
 })
 export class BusyBarComponent {
-  constructor(public ls: ListService) {
+  @Input() list!: ToDoList
+  constructor() {
 
   }
 }

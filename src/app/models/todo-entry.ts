@@ -1,4 +1,15 @@
 export class ToDoEntry {
+
+    constructor(
+        public title: string,
+        public done: boolean = false,
+        private createdAt: Date = new Date(),
+        private completedAt?: Date
+    ) { }
+}
+
+
+export class ToDoList {
     static getSampleData(): ToDoEntry[] {
         return [
             new ToDoEntry('Buy groceries', false),
@@ -23,8 +34,32 @@ export class ToDoEntry {
             new ToDoEntry('Catch up with friends', true),
         ]
     }
-    constructor(
-        public title: string,
-        public done: boolean = false
-    ) { }
+    get count(): number {
+        return this.list.length
+    }
+    get committmentPercentage(): number {
+        return 50;
+    }
+    constructor(public list: ToDoEntry[] = []) { }
+    add(): void {
+        this.list.push(new ToDoEntry(''))
+    }
+    remove(index: number): void {
+        this.list.splice(index, 1)
+    }
+    duplicate(entry: ToDoEntry, index: number): void {
+        this.list.splice(index, 0, entry)
+    }
+    edit(index: number, value: string): void {
+        this.list[index].title = value;
+    }
+    setAsCompleted(index: number) {
+        this.list[index].done = true;
+    }
+    setAsNotCompleted(index: number) {
+        this.list[index].done = false;
+    }
+    loadSampleData() {
+        this.list = ToDoList.getSampleData()
+    }
 }

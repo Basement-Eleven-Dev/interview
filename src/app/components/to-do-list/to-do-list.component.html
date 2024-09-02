@@ -1,12 +1,12 @@
-<h4 class="mb-4">To Do <span class="badge bg-secondary">{{ls.count}}</span>
-    <button (click)="ls.newEntry()" class="float-end btn btn-success">New +</button>
-    <button (click)="ls.sort()" class="float-end btn btn-primary me-2"><fa-icon [icon]="sortIcon"></fa-icon> </button>
-    <button (click)="ls.generateSampleData()" class="float-end btn btn-danger me-2">Generate Sample Data</button>
+<h4 class="mb-4">To Do <span class="badge bg-secondary">{{list.count}}</span>
+    <button (click)="list.add()" class="float-end btn btn-success">New +</button>
+    <!--<button (click)="list.sort()" class="float-end btn btn-primary me-2"><fa-icon [icon]="sortIcon"></fa-icon> </button>-->
+    <button (click)="list.loadSampleData()" class="float-end btn btn-danger me-2">Generate Sample Data</button>
 </h4>
-<p *ngIf="ls.count == 0"><em>This space seems to be empty.</em></p>
-<div class="mb-2 border rounded d-flex align-items-center p-2" *ngFor="let entry of ls.entries; index as i">
-    <fa-icon [ngbTooltip]="entry.done ? 'Flag as to do' : 'Flag as completed'" role="button" [icon]="entry.done ? unchecked : checked" (click)="ls.switchEntry(i)"></fa-icon> 
-    <input class="flex-fill mx-3 border-0" [class.checked]="entry.done" #textField type="text" [value]="entry.title" (input)="ls.edit(i,textField.value)">
-    <fa-icon ngbTooltip="Duplicate" role="button" class="mx-2" (click)="ls.duplicate(entry, i)" [icon]="copyIcon"></fa-icon> 
-    <fa-icon ngbTooltip="Delete" role="button" class="mx-2" (click)="ls.remove(i)" [icon]="removeIcon"></fa-icon> 
+<p *ngIf="list.count == 0"><em>This space seems to be empty.</em></p>
+<div class="mb-2 border rounded d-flex align-items-center p-2" *ngFor="let entry of list.list; index as i">
+    <fa-icon [ngbTooltip]="entry.done ? 'Flag as to do' : 'Flag as completed'" role="button" [icon]="entry.done ? unchecked : checked" (click)="entry.done ? list.setAsNotCompleted(i) : list.setAsCompleted(i)"></fa-icon> 
+    <input class="flex-fill mx-3 border-0" [class.checked]="entry.done" #textField type="text" [value]="entry.title" (input)="list.edit(i,textField.value)">
+    <fa-icon ngbTooltip="Duplicate" role="button" class="mx-2" (click)="list.duplicate(entry, i)" [icon]="copyIcon"></fa-icon> 
+    <fa-icon ngbTooltip="Delete" role="button" class="mx-2" (click)="list.remove(i)" [icon]="removeIcon"></fa-icon> 
 </div>
