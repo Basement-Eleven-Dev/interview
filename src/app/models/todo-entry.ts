@@ -3,8 +3,8 @@ export class ToDoEntry {
     constructor(
         public title: string,
         public done: boolean = false,
-        private createdAt: Date = new Date(),
-        private completedAt?: Date
+        public createdAt: Date = new Date(),
+        public completedAt?: Date
     ) { }
 }
 
@@ -55,9 +55,11 @@ export class ToDoList {
     }
     setAsCompleted(index: number) {
         this.list[index].done = true;
+        this.list[index].completedAt = new Date();
     }
     setAsNotCompleted(index: number) {
         this.list[index].done = false;
+        this.list[index].completedAt = undefined;
     }
     loadSampleData() {
         this.list = ToDoList.getSampleData()
