@@ -38,7 +38,24 @@ export class ToDoList {
         return this.list.length
     }
     get committmentPercentage(): number {
-        return 50;
+        let committmentValue = 0;
+        this.list.forEach((entry) => { 
+            if (entry.done) committmentValue -= 4;
+            else committmentValue += 1.5;
+            let words = entry.title.split(' '); //divido le parole tramite uno spazio
+            words = words.filter((w)=>w != ' '); //questa riga è 'opzionale' però può generare un bug se i dati non sono formattati correttamente
+            /*
+                se ci sono doppi spazi tra le parole o ci sono spazi alla fine di un titolo, dividendo le parole può capitare che uno spazio venga conteggiato come parola
+                quando invece non lo è, quindi con la funzione filter rimuovo gli spazi vuoti
+            */
+            committmentValue += 1 * words.length;
+            words.forEach((word)=>{ //ciclo sulle parole per verificare infine le doppie
+                for (let i=0;i<word.length - 1;i++) { //finisco il ciclo sulle lettere al penultimo elemento perché devo controllare coppie di lettere adiacenti uguali quindi l'ultima lettera la controllo attraverso quella precedente
+                    if (word[i] == word[i+1]) committmentValue += 1;
+                }
+            })
+        })
+        return committmentValue;
     }
     constructor(public list: ToDoEntry[] = []) { }
     add(): void {
